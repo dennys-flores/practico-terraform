@@ -1,0 +1,12 @@
+- name: Desplegando servicio NestJs
+  hosts: all
+  become: yes
+  remote_user: ubuntu
+  vars:
+    app_name: ProyNestJs
+    app_user: appuser
+    app_dir: /opt/proynestjs
+    main_file: main.js
+    service_name: nestjs
+  roles:
+    - nestjs

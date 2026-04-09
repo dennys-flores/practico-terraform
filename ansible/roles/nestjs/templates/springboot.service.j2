@@ -1,0 +1,16 @@
+[Unit]
+Description=NestJs Application - {{ app_name }}
+After=network.target
+
+[Service]
+User={{ app_user }}
+WorkingDirectory={{ app_dir }}
+ExecStart=/usr/bin/node {{ app_dir }}/{{ main_file }}
+SuccessExitStatus=143
+Restart=always
+RestartSec=10
+StandardOutput=file:/var/log/{{ app_name }}.log
+StandardError=file:/var/log/{{ app_name }}-error.log
+
+[Install]
+WantedBy=multi-user.target
